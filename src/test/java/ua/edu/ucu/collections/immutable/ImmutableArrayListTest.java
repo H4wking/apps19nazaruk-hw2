@@ -78,6 +78,11 @@ public class ImmutableArrayListTest {
         assertArrayEquals(arr.toArray(), new Object[]{1, 2, 3, 4, 5});
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveOutOfBounds() {
+        ImmutableArrayList actualResult = arr.remove(10);
+    }
+
     @Test
     public void testSet() {
         ImmutableArrayList actualResult = arr.set(1, 6);
