@@ -7,13 +7,11 @@ import static org.junit.Assert.*;
 public class ImmutableArrayListTest {
     private ImmutableArrayList arr;
     private ImmutableArrayList emptyArr;
-    private ImmutableArrayList oneElArr;
 
     @Before
     public void setUp() {
         arr = new ImmutableArrayList(new Object[]{1, 2, 3, 4, 5});
         emptyArr = new ImmutableArrayList();
-        oneElArr = new ImmutableArrayList(new Object[]{1});
     }
 
     @Test

@@ -7,13 +7,11 @@ import static org.junit.Assert.*;
 public class ImmutableLinkedListTest {
     private ImmutableLinkedList arr;
     private ImmutableLinkedList emptyArr;
-    private ImmutableLinkedList oneElArr;
 
     @Before
     public void setUp() {
         arr = new ImmutableLinkedList(new Object[]{1, 2, 3, 4, 5});
         emptyArr = new ImmutableLinkedList();
-        oneElArr = new ImmutableLinkedList(new Object[]{1});
     }
 
     @Test
@@ -120,6 +118,13 @@ public class ImmutableLinkedListTest {
     public void testIsEmpty() {
         boolean actualResult = arr.isEmpty();
         boolean expected = false;
+        assertEquals(actualResult, expected);
+    }
+
+    @Test
+    public void testIsEmptyWithEmpty() {
+        boolean actualResult = emptyArr.isEmpty();
+        boolean expected = true;
         assertEquals(actualResult, expected);
     }
 
