@@ -32,6 +32,11 @@ public class ImmutableArrayListTest {
         assertArrayEquals(arr.toArray(), new Object[]{1, 2, 3, 4, 5});
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddIndexOutOfBounds() {
+        ImmutableArrayList actualResult = arr.add(10, 6);
+    }
+
     @Test
     public void testAddAll() {
         ImmutableArrayList actualResult = arr.addAll(new Object[]{6, 7, 8});
@@ -48,11 +53,21 @@ public class ImmutableArrayListTest {
         assertArrayEquals(arr.toArray(), new Object[]{1, 2, 3, 4, 5});
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddAllIndexOutOfBounds() {
+        ImmutableArrayList actualResult = arr.addAll(10, new Object[]{6, 7, 8});
+    }
+
     @Test
     public void testGet() {
         Object actualResult = arr.get(1);
         Object expected = 2;
         assertEquals(actualResult, expected);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testGetOutOfBounds() {
+        Object actualResult = arr.get(10);
     }
 
     @Test
@@ -71,10 +86,22 @@ public class ImmutableArrayListTest {
         assertArrayEquals(arr.toArray(), new Object[]{1, 2, 3, 4, 5});
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testSetOutOfBounds() {
+        ImmutableArrayList actualResult = arr.set(10, 6);
+    }
+
     @Test
     public void testIndexOf() {
         int actualResult = arr.indexOf(2);
         int expected = 1;
+        assertEquals(actualResult, expected);
+    }
+
+    @Test
+    public void testIndexOfNotInList() {
+        int actualResult = arr.indexOf(10);
+        int expected = -1;
         assertEquals(actualResult, expected);
     }
 
@@ -97,6 +124,13 @@ public class ImmutableArrayListTest {
     public void testIsEmpty() {
         boolean actualResult = arr.isEmpty();
         boolean expected = false;
+        assertEquals(actualResult, expected);
+    }
+
+    @Test
+    public void testIsEmptyWithEmpty() {
+        boolean actualResult = emptyArr.isEmpty();
+        boolean expected = true;
         assertEquals(actualResult, expected);
     }
 

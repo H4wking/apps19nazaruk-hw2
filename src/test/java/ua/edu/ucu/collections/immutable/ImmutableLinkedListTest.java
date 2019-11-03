@@ -17,6 +17,12 @@ public class ImmutableLinkedListTest {
     }
 
     @Test
+    public void testCreateWithEmptyArr() {
+        ImmutableLinkedList test = new ImmutableLinkedList(new Object[]{});
+        assertEquals(0, test.size());
+    }
+
+    @Test
     public void testAdd() {
         ImmutableLinkedList actualResult = arr.add(6);
         Object[] expected = {1, 2, 3, 4, 5, 6};
@@ -30,6 +36,11 @@ public class ImmutableLinkedListTest {
         Object[] expected = {1, 6, 2, 3, 4, 5};
         assertArrayEquals(actualResult.toArray(), expected);
         assertArrayEquals(arr.toArray(), new Object[]{1, 2, 3, 4, 5});
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddIndexOutOfBounds() {
+        ImmutableLinkedList actualResult = arr.add(10, 6);
     }
 
     @Test
@@ -63,6 +74,11 @@ public class ImmutableLinkedListTest {
         assertArrayEquals(arr.toArray(), new Object[]{1, 2, 3, 4, 5});
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testRemoveOutOfBounds() {
+        ImmutableLinkedList actualResult = arr.remove(10);
+    }
+
     @Test
     public void testSet() {
         ImmutableLinkedList actualResult = arr.set(1, 6);
@@ -75,6 +91,13 @@ public class ImmutableLinkedListTest {
     public void testIndexOf() {
         int actualResult = arr.indexOf(2);
         int expected = 1;
+        assertEquals(actualResult, expected);
+    }
+
+    @Test
+    public void testIndexOfNotInList() {
+        int actualResult = arr.indexOf(10);
+        int expected = -1;
         assertEquals(actualResult, expected);
     }
 
