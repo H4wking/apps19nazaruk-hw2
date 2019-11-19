@@ -155,7 +155,7 @@ public class ImmutableLinkedList implements ImmutableList {
     public int indexOf(Object e) {
         Node cur = head;
         for (int i = 0; i < size; i++) {
-            if (cur.data == e) {
+            if (cur.data.equals(e)) {
                 return i;
             }
             cur = cur.next;

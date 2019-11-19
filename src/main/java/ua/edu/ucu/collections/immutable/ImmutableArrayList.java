@@ -3,7 +3,7 @@ package ua.edu.ucu.collections.immutable;
 import java.util.Arrays;
 
 public class ImmutableArrayList implements ImmutableList {
-    private Object[] arr;
+    private final Object[] arr;
 
     public ImmutableArrayList() {
         this.arr = new Object[0];
@@ -14,8 +14,8 @@ public class ImmutableArrayList implements ImmutableList {
     }
 
     private ImmutableArrayList copy(int s) {
-        ImmutableArrayList arrCopy = new ImmutableArrayList();
-        arrCopy.arr = Arrays.copyOf(arr, s);
+        ImmutableArrayList arrCopy = new ImmutableArrayList(Arrays.copyOf(arr, s));
+//        arrCopy.arr = Arrays.copyOf(arr, s);
         return arrCopy;
     }
 
@@ -88,7 +88,7 @@ public class ImmutableArrayList implements ImmutableList {
     @Override
     public int indexOf(Object e) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == e) {
+            if (arr[i].equals(e)) {
                 return i;
             }
         }
