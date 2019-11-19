@@ -14,8 +14,8 @@ public class ImmutableArrayList implements ImmutableList {
     }
 
     private ImmutableArrayList copy(int s) {
-        ImmutableArrayList arrCopy = new ImmutableArrayList(Arrays.copyOf(arr, s));
-//        arrCopy.arr = Arrays.copyOf(arr, s);
+        ImmutableArrayList arrCopy =
+                new ImmutableArrayList(Arrays.copyOf(arr, s));
         return arrCopy;
     }
 
